@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\I18n\Date;
 
 /**
  * Events Model
@@ -70,5 +71,15 @@ class EventsTable extends Table
             ->notEmpty('last_register_date');
 
         return $validator;
+    }
+
+    public function getOpenForRegistration()
+    {
+        $query = $this->find('all');
+        $query->where([
+            'date >=' => Date::now(),
+            'last_register_date >=' => Date::now()
+        ]);
+        return $query;
     }
 }

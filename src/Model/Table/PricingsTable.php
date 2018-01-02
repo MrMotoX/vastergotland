@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Table;
 
+use Cake\I18n\Date;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -79,5 +80,17 @@ class PricingsTable extends Table
         $rules->add($rules->existsIn(['event_id'], 'Events'));
 
         return $rules;
+    }
+
+    public function getActivePriceOnEvent($eventId)
+    {
+        $query = $this->find('all');
+        $query->where([
+                'event_id' => $eventId,
+                'date <=' => Date::now()
+            ])->order([
+                'date DESC'
+            ])->limit(1);
+        return $query;
     }
 }

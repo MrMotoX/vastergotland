@@ -2,6 +2,7 @@
 namespace App\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
+use Cake\I18n\Date;
 
 /**
  * EventsFixture
@@ -31,17 +32,47 @@ class EventsFixture extends TestFixture
     ];
     // @codingStandardsIgnoreEnd
 
-    /**
-     * Records
-     *
-     * @var array
-     */
-    public $records = [
-        [
-            'id' => 1,
-            'title' => 'Lorem ipsum dolor sit amet',
-            'date' => '2017-12-28',
-            'last_register_date' => '2017-12-28'
-        ],
-    ];
+    public function init()
+    {
+        $this->records = [
+            [
+                'id' => 1,
+                'title' => 'Ett',
+                'date' => Date::now()->day(-2),
+                'last_register_date' => Date::now()->day(-3)
+            ],
+            [
+                'id' => 2,
+                'title' => 'Två',
+                'date' => Date::now()->day(0),
+                'last_register_date' => Date::now()->day(-1)
+            ],
+            [
+                'id' => 3,
+                'title' => 'Tre',
+                'date' => Date::now()->day(2),
+                'last_register_date' => Date::now()->day(-1)
+            ],
+            [
+                'id' => 4,
+                'title' => 'Fyra',
+                'date' => Date::now()->day(2),
+                'last_register_date' => Date::now()
+            ],
+            [
+                'id' => 5,
+                'title' => 'Fem',
+                'date' => Date::now()->day(2),
+                'last_register_date' => Date::now()->day(2)
+            ],
+            [
+                'id' => 6,
+                'title' => 'Sex',
+                'date' => Date::now()->day(15),
+                'last_register_date' => Date::now()->day(10)
+            ],
+        ];
+
+        parent::init();
+    }
 }

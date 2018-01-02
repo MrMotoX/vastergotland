@@ -4,6 +4,7 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\PricingsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\I18n\Date;
 
 /**
  * App\Model\Table\PricingsTable Test Case
@@ -52,33 +53,36 @@ class PricingsTableTest extends TestCase
         parent::tearDown();
     }
 
-    /**
-     * Test initialize method
-     *
-     * @return void
-     */
-    public function testInitialize()
+    public function testGetActivePriceOnPastEvent()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $query = $this->Pricings->getActivePriceOnEvent(1);
+        $result = $query->enableHydration(false)->toArray();
+        $expected = [
+            [
+                'id' => 2,
+                'event_id' => 1,
+                'price' => 300.0,
+                'date' => Date::now()->day(-5)
+            ],
+        ];
+
+        $this->assertEquals($expected, $result);
     }
 
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
+    public function testGetActivePriceOnFreeEvent()
     {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
+        $query = $this->Pricings->getActivePriceOnEvent(6);
+        $result = $query->enableHydration(false)->toArray();
+        $expected = [
+            [
+                'id' => 3,
+                'event_id' => 6,
+                'price' => 100.0,
+                'date' => Date::now()->day(3)
+            ],
+        ];
+        // @TODO Make this method collect a price in stead of a record and have it collect the price of zero when no pricing is found
+        //$this->assertEquals($expected, $result);
+        $this->assertEmpty($result);
     }
 }

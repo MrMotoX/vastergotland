@@ -4,6 +4,7 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\EventsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\I18n\Date;
 
 /**
  * App\Model\Table\EventsTable Test Case
@@ -52,23 +53,31 @@ class EventsTableTest extends TestCase
         parent::tearDown();
     }
 
-    /**
-     * Test initialize method
-     *
-     * @return void
-     */
-    public function testInitialize()
+    public function testGetOpenForRegistration()
     {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+        $query = $this->Events->getOpenForRegistration();
+        $result = $query->enableHydration(false)->toArray();
+        $expected = [
+            [
+                'id' => 4,
+                'title' => 'Fyra',
+                'date' => Date::now()->day(2),
+                'last_register_date' => Date::now()
+            ],
+            [
+                'id' => 5,
+                'title' => 'Fem',
+                'date' => Date::now()->day(2),
+                'last_register_date' => Date::now()->day(2)
+            ],
+            [
+                'id' => 6,
+                'title' => 'Sex',
+                'date' => Date::now()->day(15),
+                'last_register_date' => Date::now()->day(10)
+            ],
+        ];
 
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->assertEquals($expected, $result);
     }
 }

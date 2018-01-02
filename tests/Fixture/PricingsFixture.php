@@ -2,6 +2,7 @@
 namespace App\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
+use Cake\I18n\Date;
 
 /**
  * PricingsFixture
@@ -31,17 +32,35 @@ class PricingsFixture extends TestFixture
     ];
     // @codingStandardsIgnoreEnd
 
-    /**
-     * Records
-     *
-     * @var array
-     */
-    public $records = [
-        [
-            'id' => 1,
-            'event_id' => 1,
-            'price' => 1.5,
-            'date' => '2017-12-28'
-        ],
-    ];
+    public function init()
+    {
+        $this->records = [
+            [
+                'id' => 1,
+                'event_id' => 1,
+                'price' => 100.0,
+                'date' => Date::now()->day(-10)
+            ],
+            [
+                'id' => 2,
+                'event_id' => 1,
+                'price' => 300.0,
+                'date' => Date::now()->day(-5)
+            ],
+            [
+                'id' => 3,
+                'event_id' => 6,
+                'price' => 100.0,
+                'date' => Date::now()->day(3)
+            ],
+            [
+                'id' => 4,
+                'event_id' => 6,
+                'price' => 300.0,
+                'date' => Date::now()->day(8)
+            ],
+        ];
+
+        parent::init();
+    }
 }
