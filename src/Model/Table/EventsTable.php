@@ -1,8 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use Cake\I18n\Date;
@@ -77,9 +75,10 @@ class EventsTable extends Table
     {
         $query = $this->find('all');
         $query->where([
-            'date >=' => Date::now(),
-            'last_register_date >=' => Date::now()
+            'Events.date >=' => Date::now(),
+            'Events.last_register_date >=' => Date::now()
         ]);
+        //debug($query);
         return $query;
     }
 }

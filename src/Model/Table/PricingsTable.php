@@ -2,7 +2,6 @@
 namespace App\Model\Table;
 
 use Cake\I18n\Date;
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -86,11 +85,23 @@ class PricingsTable extends Table
     {
         $query = $this->find('all');
         $query->where([
-                'event_id' => $eventId,
-                'date <=' => Date::now()
-            ])->order([
-                'date DESC'
-            ])->limit(1);
-        return $query;
+                'Pricings.event_id' => $eventId,
+                'Pricings.date <=' => Date::now()
+            ])
+            ->order([
+                'Pricings.date DESC'
+            ])
+            ->limit(1)
+            ->select([
+                'Pricings.price'
+            ]);
+        if ($query->count() > 0)
+        {
+            return $query->first()->price;
+        }
+        else
+        {
+            return 0.0;
+        }
     }
 }

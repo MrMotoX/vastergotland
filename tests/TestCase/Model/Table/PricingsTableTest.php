@@ -4,7 +4,6 @@ namespace App\Test\TestCase\Model\Table;
 use App\Model\Table\PricingsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
-use Cake\I18n\Date;
 
 /**
  * App\Model\Table\PricingsTable Test Case
@@ -55,34 +54,25 @@ class PricingsTableTest extends TestCase
 
     public function testGetActivePriceOnPastEvent()
     {
-        $query = $this->Pricings->getActivePriceOnEvent(1);
-        $result = $query->enableHydration(false)->toArray();
-        $expected = [
-            [
-                'id' => 2,
-                'event_id' => 1,
-                'price' => 300.0,
-                'date' => Date::now()->day(-5)
-            ],
-        ];
+        $result = $this->Pricings->getActivePriceOnEvent(1);
+        $expected = 300.0;
 
         $this->assertEquals($expected, $result);
     }
 
     public function testGetActivePriceOnFreeEvent()
     {
-        $query = $this->Pricings->getActivePriceOnEvent(6);
-        $result = $query->enableHydration(false)->toArray();
-        $expected = [
-            [
-                'id' => 3,
-                'event_id' => 6,
-                'price' => 100.0,
-                'date' => Date::now()->day(3)
-            ],
-        ];
-        // @TODO Make this method collect a price in stead of a record and have it collect the price of zero when no pricing is found
-        //$this->assertEquals($expected, $result);
-        $this->assertEmpty($result);
+        $result = $this->Pricings->getActivePriceOnEvent(5);
+        $expected = 0.0;
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGetActivePriceOnFutureEvent()
+    {
+        $result = $this->Pricings->getActivePriceOnEvent(6);
+        $expected = 200.0;
+
+        $this->assertEquals($expected, $result);
     }
 }

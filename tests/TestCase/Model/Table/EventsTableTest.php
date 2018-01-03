@@ -61,20 +61,20 @@ class EventsTableTest extends TestCase
             [
                 'id' => 4,
                 'title' => 'Fyra',
-                'date' => Date::now()->day(2),
+                'date' => Date::now()->addDay(2),
                 'last_register_date' => Date::now()
             ],
             [
                 'id' => 5,
                 'title' => 'Fem',
-                'date' => Date::now()->day(2),
-                'last_register_date' => Date::now()->day(2)
+                'date' => Date::now()->addDay(2),
+                'last_register_date' => Date::now()->addDay(2)
             ],
             [
                 'id' => 6,
                 'title' => 'Sex',
-                'date' => Date::now()->day(15),
-                'last_register_date' => Date::now()->day(10)
+                'date' => Date::now()->addDay(15),
+                'last_register_date' => Date::now()->addDay(10)
             ],
         ];
 
