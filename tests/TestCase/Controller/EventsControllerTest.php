@@ -27,7 +27,9 @@ class EventsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/events');
+
+        $this->assertResponseOk();
     }
 
     /**

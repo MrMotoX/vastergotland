@@ -10,27 +10,7 @@ use Cake\I18n\Date;
  */
 class EventsFixture extends TestFixture
 {
-
-    /**
-     * Fields
-     *
-     * @var array
-     */
-    // @codingStandardsIgnoreStart
-    public $fields = [
-        'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'title' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'date' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'last_register_date' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        '_constraints' => [
-            'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-        ],
-        '_options' => [
-            'engine' => 'InnoDB',
-            'collation' => 'latin1_swedish_ci'
-        ],
-    ];
-    // @codingStandardsIgnoreEnd
+    public $import = ['table' => 'events'];
 
     public function init()
     {
@@ -39,37 +19,43 @@ class EventsFixture extends TestFixture
                 'id' => 1,
                 'title' => 'Ett',
                 'date' => Date::now()->subDay(2),
-                'last_register_date' => Date::now()->subDay(3)
+                'last_register_date' => Date::now()->subDay(3),
+                'location' => 'Plats1'
             ],
             [
                 'id' => 2,
                 'title' => 'Två',
                 'date' => Date::now(),
-                'last_register_date' => Date::now()->subDay(1)
+                'last_register_date' => Date::now()->subDay(1),
+                'location' => 'Plats2'
             ],
             [
                 'id' => 3,
                 'title' => 'Tre',
                 'date' => Date::now()->addDay(2),
-                'last_register_date' => Date::now()->subDay(1)
+                'last_register_date' => Date::now()->subDay(1),
+                'location' => 'Plats3'
             ],
             [
                 'id' => 4,
                 'title' => 'Fyra',
                 'date' => Date::now()->addDay(2),
-                'last_register_date' => Date::now()
+                'last_register_date' => Date::now(),
+                'location' => 'Plats4'
             ],
             [
                 'id' => 5,
                 'title' => 'Fem',
                 'date' => Date::now()->addDay(2),
-                'last_register_date' => Date::now()->addDay(2)
+                'last_register_date' => Date::now()->addDay(2),
+                'location' => 'Plats5'
             ],
             [
                 'id' => 6,
                 'title' => 'Sex',
                 'date' => Date::now()->addDay(15),
-                'last_register_date' => Date::now()->addDay(10)
+                'last_register_date' => Date::now()->addDay(10),
+                'location' => 'Plats6'
             ],
         ];
 

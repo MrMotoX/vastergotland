@@ -29,6 +29,7 @@ class Event extends Entity
         'title' => true,
         'date' => true,
         'last_register_date' => true,
-        'pricings' => true
+        'pricings' => true,
+        'location' => true
     ];
 }
