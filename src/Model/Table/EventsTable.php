@@ -45,6 +45,7 @@ class EventsTable extends Table
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
+     * @todo Correct the validation of these fields
      */
     public function validationDefault(Validator $validator)
     {
@@ -78,7 +79,13 @@ class EventsTable extends Table
             'Events.date >=' => Date::now(),
             'Events.last_register_date >=' => Date::now()
         ]);
-        //debug($query);
+
         return $query;
     }
+
+    /*
+     * @todo Create a method which can be used to paginate all events together with their active price
+     * I should always look for the pricing which is the youngest past the active date. If I can't find any I will
+     * have to look for the pricing which is the closest in the future. If I still can't find any I will pick the price of zero.
+     */
 }
