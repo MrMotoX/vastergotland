@@ -72,7 +72,7 @@ class EventsTable extends Table
         return $validator;
     }
 
-    public function getOpenForRegistration()
+    public function getQueryOpenForRegistration()
     {
         $query = $this->find('all');
         $query->where([

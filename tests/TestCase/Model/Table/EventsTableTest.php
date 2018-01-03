@@ -53,9 +53,9 @@ class EventsTableTest extends TestCase
         parent::tearDown();
     }
 
-    public function testGetOpenForRegistration()
+    public function testGetQueryOpenForRegistration()
     {
-        $query = $this->Events->getOpenForRegistration();
+        $query = $this->Events->getQueryOpenForRegistration();
         $result = $query->enableHydration(false)->toArray();
         $expected = [
             [
