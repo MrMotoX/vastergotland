@@ -20,6 +20,7 @@ class EventsFixture extends TestFixture
                 'title' => 'Ett',
                 'date' => Date::now()->subDay(2),
                 'last_register_date' => Date::now()->subDay(3),
+                'first_register_date' => Date::now()->subDay(6),
                 'location' => 'Plats1'
             ],
             [
@@ -27,6 +28,7 @@ class EventsFixture extends TestFixture
                 'title' => 'Två',
                 'date' => Date::now(),
                 'last_register_date' => Date::now()->subDay(1),
+                'first_register_date' => Date::now()->subDay(3),
                 'location' => 'Plats2'
             ],
             [
@@ -34,6 +36,7 @@ class EventsFixture extends TestFixture
                 'title' => 'Tre',
                 'date' => Date::now()->addDay(2),
                 'last_register_date' => Date::now()->subDay(1),
+                'first_register_date' => Date::now()->subDay(3),
                 'location' => 'Plats3'
             ],
             [
@@ -41,6 +44,7 @@ class EventsFixture extends TestFixture
                 'title' => 'Fyra',
                 'date' => Date::now()->addDay(2),
                 'last_register_date' => Date::now(),
+                'first_register_date' => Date::now()->subDay(3),
                 'location' => 'Plats4'
             ],
             [
@@ -48,6 +52,7 @@ class EventsFixture extends TestFixture
                 'title' => 'Fem',
                 'date' => Date::now()->addDay(2),
                 'last_register_date' => Date::now()->addDay(2),
+                'first_register_date' => Date::now(),
                 'location' => 'Plats5'
             ],
             [
@@ -55,6 +60,7 @@ class EventsFixture extends TestFixture
                 'title' => 'Sex',
                 'date' => Date::now()->addDay(15),
                 'last_register_date' => Date::now()->addDay(10),
+                'first_register_date' => Date::now()->addDay(1),
                 'location' => 'Plats6'
             ],
         ];

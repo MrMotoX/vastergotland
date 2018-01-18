@@ -88,7 +88,8 @@ class EventsTable extends Table
         $query = $this->find('all');
         $query->where([
             'Events.date >=' => Date::now(),
-            'Events.last_register_date >=' => Date::now()
+            'Events.last_register_date >=' => Date::now(),
+            'Events.first_register_date <=' => Date::now()
         ]);
 
         return $query;
