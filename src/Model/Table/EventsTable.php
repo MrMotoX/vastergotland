@@ -76,9 +76,7 @@ class EventsTable extends Table
 
         $validator
             ->scalar('location')
-            ->maxLength('location', 255)
-            ->requirePresence('location', 'create')
-            ->notEmpty('location');
+            ->maxLength('location', 255);
 
         return $validator;
     }
