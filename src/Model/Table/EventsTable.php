@@ -70,6 +70,11 @@ class EventsTable extends Table
             ->notEmpty('last_register_date');
 
         $validator
+            ->date('first_register_date')
+            ->requirePresence('first_register_date', 'create')
+            ->notEmpty('first_register_date');
+
+        $validator
             ->scalar('location')
             ->maxLength('location', 255)
             ->requirePresence('location', 'create')
