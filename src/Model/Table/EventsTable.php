@@ -45,7 +45,6 @@ class EventsTable extends Table
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
-     * @todo Correct the validation of these fields
      */
     public function validationDefault(Validator $validator)
     {
@@ -84,11 +83,15 @@ class EventsTable extends Table
     public function getQueryOpenForRegistration()
     {
         $query = $this->find('all');
-        $query->where([
-            'Events.date >=' => Date::now(),
-            'Events.last_register_date >=' => Date::now(),
-            'Events.first_register_date <=' => Date::now()
-        ]);
+        $query
+            ->where([
+                'Events.date >=' => Date::now(),
+                'Events.last_register_date >=' => Date::now(),
+                'Events.first_register_date <=' => Date::now()
+            ])
+            ->order([
+                'Events.date ASC'
+            ]);
 
         return $query;
     }

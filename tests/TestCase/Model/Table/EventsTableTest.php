@@ -56,23 +56,18 @@ class EventsTableTest extends TestCase
     public function testGetQueryOpenForRegistration()
     {
         $query = $this->Events->getQueryOpenForRegistration();
-        $result = $query->enableHydration(false)->toArray();
+        $result = $query
+            ->select(['Events.id', 'Events.title'])
+            ->enableHydration(false)
+            ->toArray();
         $expected = [
             [
-                'id' => 4,
-                'title' => 'Fyra',
-                'date' => Date::now()->addDay(2),
-                'last_register_date' => Date::now(),
-                'first_register_date' => Date::now()->subDay(3),
-                'location' => 'Plats4'
+                'id' => 5,
+                'title' => 'Fem'
             ],
             [
-                'id' => 5,
-                'title' => 'Fem',
-                'date' => Date::now()->addDay(2),
-                'last_register_date' => Date::now()->addDay(2),
-                'first_register_date' => Date::now(),
-                'location' => 'Plats5'
+                'id' => 4,
+                'title' => 'Fyra'
             ],
         ];
 

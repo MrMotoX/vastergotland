@@ -42,7 +42,7 @@ class EventsFixture extends TestFixture
             [
                 'id' => 4,
                 'title' => 'Fyra',
-                'date' => Date::now()->addDay(2),
+                'date' => Date::now()->addDay(3),
                 'last_register_date' => Date::now(),
                 'first_register_date' => Date::now()->subDay(3),
                 'location' => 'Plats4'
