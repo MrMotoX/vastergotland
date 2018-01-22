@@ -96,9 +96,30 @@ class EventsTable extends Table
         return $query;
     }
 
-    /*
-     * @todo Create a method which can be used to paginate all events together with their active price
-     * I should always look for the pricing which is the youngest past the active date. If I can't find any I will
-     * have to look for the pricing which is the closest in the future. If I still can't find any I will pick the price of zero.
-     */
+    public function getDetailsOnEventById($id)
+    {
+        $pricings = $this->Pricings->getPricingsOnEventById($id);
+        /* TODO Gather amount of applications */
+
+        $eventQuery = $this->find('all');
+        $eventQuery
+            ->select([
+                'Events.first_register_date',
+                'Events.last_register_date',
+                'Events.max_applications'
+            ])
+            ->where([
+                'Events.id' => $id
+            ]);
+        $event = $eventQuery->first();
+
+        if (!empty($event))
+        {
+            $event['pricings'] = $pricings;
+            /* TODO Add amount of applications here */
+        }
+
+        return $event;
+    }
+
 }

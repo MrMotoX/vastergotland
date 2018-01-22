@@ -104,4 +104,22 @@ class PricingsTable extends Table
             return 0.0;
         }
     }
+
+    public function getPricingsOnEventById($eventId)
+    {
+        $query = $this->find('all');
+        $query
+            ->where([
+                'Pricings.event_id' => $eventId
+            ])
+            ->order([
+                'Pricings.date ASC'
+            ])
+            ->select([
+                'Pricings.id',
+                'Pricings.price',
+                'Pricings.date'
+            ]);
+        return $query->toArray();
+    }
 }

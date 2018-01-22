@@ -21,7 +21,8 @@ class EventsFixture extends TestFixture
                 'date' => Date::now()->subDay(2),
                 'last_register_date' => Date::now()->subDay(3),
                 'first_register_date' => Date::now()->subDay(6),
-                'location' => 'Plats1'
+                'location' => 'Plats1',
+                'max_applications' => 10
             ],
             [
                 'id' => 2,
@@ -29,7 +30,8 @@ class EventsFixture extends TestFixture
                 'date' => Date::now(),
                 'last_register_date' => Date::now()->subDay(1),
                 'first_register_date' => Date::now()->subDay(3),
-                'location' => 'Plats2'
+                'location' => 'Plats2',
+                'max_applications' => 20
             ],
             [
                 'id' => 3,
@@ -37,7 +39,8 @@ class EventsFixture extends TestFixture
                 'date' => Date::now()->addDay(2),
                 'last_register_date' => Date::now()->subDay(1),
                 'first_register_date' => Date::now()->subDay(3),
-                'location' => 'Plats3'
+                'location' => 'Plats3',
+                'max_applications' => 30
             ],
             [
                 'id' => 4,
@@ -45,7 +48,8 @@ class EventsFixture extends TestFixture
                 'date' => Date::now()->addDay(3),
                 'last_register_date' => Date::now(),
                 'first_register_date' => Date::now()->subDay(3),
-                'location' => 'Plats4'
+                'location' => 'Plats4',
+                'max_applications' => 40
             ],
             [
                 'id' => 5,
@@ -53,7 +57,8 @@ class EventsFixture extends TestFixture
                 'date' => Date::now()->addDay(2),
                 'last_register_date' => Date::now()->addDay(2),
                 'first_register_date' => Date::now(),
-                'location' => 'Plats5'
+                'location' => 'Plats5',
+                'max_applications' => 50
             ],
             [
                 'id' => 6,
@@ -61,7 +66,8 @@ class EventsFixture extends TestFixture
                 'date' => Date::now()->addDay(15),
                 'last_register_date' => Date::now()->addDay(10),
                 'first_register_date' => Date::now()->addDay(1),
-                'location' => 'Plats6'
+                'location' => 'Plats6',
+                'max_applications' => 60
             ],
         ];
 

@@ -73,4 +73,28 @@ class EventsTableTest extends TestCase
 
         $this->assertEquals($expected, $result);
     }
+
+    public function testGetDetailsOnFutureEvent()
+    {
+        $result = $this->Events->getDetailsOnEventById(6)->toArray();
+        $expected = [
+            'first_register_date' => Date::now()->addDay(1),
+            'last_register_date' => Date::now()->addDay(10),
+            'max_applications' => 60,
+            'pricings' => [
+                [
+                    'id' => 4,
+                    'price' => 200.0,
+                    'date' => Date::now()->subDay(2)
+                ],
+                [
+                    'id' => 5,
+                    'price' => 400.0,
+                    'date' => Date::now()->addDay(8)
+                ]
+            ]
+        ];
+
+        $this->assertEquals($expected, $result);
+    }
 }
