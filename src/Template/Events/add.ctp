@@ -17,9 +17,11 @@
     <fieldset>
         <legend><?= __('Add Event') ?></legend>
         <?php
-            echo $this->Form->control('title');
-            echo $this->Form->control('date');
-            echo $this->Form->control('last_register_date');
+            echo $this->Form->control('Events.title');
+            echo $this->Form->control('Events.location');
+            echo $this->Form->control('Events.date');
+            echo $this->Form->control('Events.first_register_date');
+            echo $this->Form->control('Events.last_register_date');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
