@@ -18,11 +18,6 @@ class CreateEventsFields extends AbstractMigration
             'limit' => 11,
             'null' => false,
         ]);
-        $table->addColumn('field_id', 'integer', [
-            'default' => null,
-            'limit' => 11,
-            'null' => false,
-        ]);
         $table->addColumn('title', 'string', [
             'default' => null,
             'limit' => 255,
