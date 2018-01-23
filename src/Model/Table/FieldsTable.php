@@ -69,12 +69,14 @@ class FieldsTable extends Table
 
     public function getFieldsByTypeQuery($type = '')
     {
-        return $this->find('all')
+        $query = $this->find('all');
+        $query
             ->where([
                 'Fields.type' => $type
             ])
             ->order([
                 'Fields.sort ASC'
             ]);
+        return $query;
     }
 }
