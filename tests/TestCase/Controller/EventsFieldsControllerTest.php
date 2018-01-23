@@ -20,7 +20,6 @@ class EventsFieldsControllerTest extends IntegrationTestCase
         'app.events',
         'app.pricings',
         'app.fields',
-        'app.applications_fields',
         'app.applications',
         'app.users',
         'app.applications_events_fields'

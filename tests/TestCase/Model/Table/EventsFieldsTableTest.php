@@ -30,7 +30,6 @@ class EventsFieldsTableTest extends TestCase
         'app.applications',
         'app.users',
         'app.fields',
-        'app.applications_fields',
         'app.applications_events_fields'
     ];
 

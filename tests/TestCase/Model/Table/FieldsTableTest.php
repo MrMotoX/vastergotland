@@ -24,13 +24,7 @@ class FieldsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.fields',
-        'app.applications',
-        'app.events',
-        'app.pricings',
-        'app.users',
-        'app.applications_fields',
-        'app.events_fields'
+        'app.fields'
     ];
 
     /**
@@ -67,13 +61,31 @@ class FieldsTableTest extends TestCase
         $this->markTestIncomplete('Not implemented yet.');
     }
 
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
+    public function testGettingFieldsByTypeText()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $query = $this->Fields->getFieldsByTypeQuery('text');
+        $result = $query
+            ->enableHydration(false)
+            ->toArray();
+        $expected = [
+            [
+                'id' => 2,
+                'title' => 'Förnamn',
+                'type' => 'text',
+                'validation' => '',
+                'data' => '',
+                'sort' => 100
+            ],
+            [
+                'id' => 1,
+                'title' => 'Efternamn',
+                'type' => 'text',
+                'validation' => 'notEmpty',
+                'data' => '',
+                'sort' => 200
+            ]
+        ];
+
+        $this->assertEquals($expected, $result);
     }
 }
