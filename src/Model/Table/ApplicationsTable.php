@@ -12,7 +12,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\EventsTable|\Cake\ORM\Association\BelongsTo $Events
  * @property \App\Model\Table\PricingsTable|\Cake\ORM\Association\BelongsTo $Pricings
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\FieldsTable|\Cake\ORM\Association\BelongsToMany $Fields
+ * @property |\Cake\ORM\Association\BelongsToMany $EventsFields
  *
  * @method \App\Model\Entity\Application get($primaryKey, $options = [])
  * @method \App\Model\Entity\Application newEntity($data = null, array $options = [])
@@ -51,10 +51,10 @@ class ApplicationsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsToMany('Fields', [
+        $this->belongsToMany('EventsFields', [
             'foreignKey' => 'application_id',
-            'targetForeignKey' => 'field_id',
-            'joinTable' => 'applications_fields'
+            'targetForeignKey' => 'events_field_id',
+            'joinTable' => 'applications_events_fields'
         ]);
     }
 

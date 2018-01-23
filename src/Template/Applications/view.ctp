@@ -19,6 +19,8 @@
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Fields'), ['controller' => 'Fields', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Field'), ['controller' => 'Fields', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Events Fields'), ['controller' => 'EventsFields', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Events Field'), ['controller' => 'EventsFields', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="applications view large-9 medium-8 columns content">
@@ -80,6 +82,37 @@
                     <?= $this->Html->link(__('View'), ['controller' => 'Fields', 'action' => 'view', $fields->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Fields', 'action' => 'edit', $fields->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Fields', 'action' => 'delete', $fields->id], ['confirm' => __('Are you sure you want to delete # {0}?', $fields->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
+    </div>
+    <div class="related">
+        <h4><?= __('Related Events Fields') ?></h4>
+        <?php if (!empty($application->events_fields)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= __('Id') ?></th>
+                <th scope="col"><?= __('Event Id') ?></th>
+                <th scope="col"><?= __('Title') ?></th>
+                <th scope="col"><?= __('Type') ?></th>
+                <th scope="col"><?= __('Validation') ?></th>
+                <th scope="col"><?= __('Data') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($application->events_fields as $eventsFields): ?>
+            <tr>
+                <td><?= h($eventsFields->id) ?></td>
+                <td><?= h($eventsFields->event_id) ?></td>
+                <td><?= h($eventsFields->title) ?></td>
+                <td><?= h($eventsFields->type) ?></td>
+                <td><?= h($eventsFields->validation) ?></td>
+                <td><?= h($eventsFields->data) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'EventsFields', 'action' => 'view', $eventsFields->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'EventsFields', 'action' => 'edit', $eventsFields->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'EventsFields', 'action' => 'delete', $eventsFields->id], ['confirm' => __('Are you sure you want to delete # {0}?', $eventsFields->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

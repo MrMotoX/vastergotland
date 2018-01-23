@@ -9,7 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Fields Model
  *
- * @property \App\Model\Table\ApplicationsTable|\Cake\ORM\Association\BelongsToMany $Applications
  * @property \App\Model\Table\EventsTable|\Cake\ORM\Association\BelongsToMany $Events
  *
  * @method \App\Model\Entity\Field get($primaryKey, $options = [])
@@ -37,11 +36,6 @@ class FieldsTable extends Table
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 
-        $this->belongsToMany('Applications', [
-            'foreignKey' => 'field_id',
-            'targetForeignKey' => 'application_id',
-            'joinTable' => 'applications_fields'
-        ]);
         $this->belongsToMany('Events', [
             'foreignKey' => 'field_id',
             'targetForeignKey' => 'event_id',

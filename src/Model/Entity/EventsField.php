@@ -8,14 +8,13 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $event_id
- * @property int $field_id
  * @property string $title
  * @property string $type
  * @property string $validation
  * @property string $data
  *
  * @property \App\Model\Entity\Event $event
- * @property \App\Model\Entity\Field $field
+ * @property \App\Model\Entity\Application[] $applications
  */
 class EventsField extends Entity
 {
@@ -31,12 +30,11 @@ class EventsField extends Entity
      */
     protected $_accessible = [
         'event_id' => true,
-        'field_id' => true,
         'title' => true,
         'type' => true,
         'validation' => true,
         'data' => true,
         'event' => true,
-        'field' => true
+        'applications' => true
     ];
 }

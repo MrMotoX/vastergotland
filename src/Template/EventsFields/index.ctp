@@ -12,6 +12,8 @@
         <li><?= $this->Html->link(__('New Event'), ['controller' => 'Events', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Fields'), ['controller' => 'Fields', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Field'), ['controller' => 'Fields', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Applications'), ['controller' => 'Applications', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Application'), ['controller' => 'Applications', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="eventsFields index large-9 medium-8 columns content">
@@ -21,7 +23,6 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('event_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('field_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('title') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('type') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -32,7 +33,6 @@
             <tr>
                 <td><?= $this->Number->format($eventsField->id) ?></td>
                 <td><?= $eventsField->has('event') ? $this->Html->link($eventsField->event->title, ['controller' => 'Events', 'action' => 'view', $eventsField->event->id]) : '' ?></td>
-                <td><?= $eventsField->has('field') ? $this->Html->link($eventsField->field->title, ['controller' => 'Fields', 'action' => 'view', $eventsField->field->id]) : '' ?></td>
                 <td><?= h($eventsField->title) ?></td>
                 <td><?= h($eventsField->type) ?></td>
                 <td class="actions">

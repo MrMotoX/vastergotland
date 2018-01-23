@@ -38,7 +38,7 @@ class EventsFieldsController extends AppController
     public function view($id = null)
     {
         $eventsField = $this->EventsFields->get($id, [
-            'contain' => ['Events', 'Fields']
+            'contain' => ['Events', 'Fields', 'Applications']
         ]);
 
         $this->set('eventsField', $eventsField);
@@ -63,7 +63,8 @@ class EventsFieldsController extends AppController
         }
         $events = $this->EventsFields->Events->find('list', ['limit' => 200]);
         $fields = $this->EventsFields->Fields->find('list', ['limit' => 200]);
-        $this->set(compact('eventsField', 'events', 'fields'));
+        $applications = $this->EventsFields->Applications->find('list', ['limit' => 200]);
+        $this->set(compact('eventsField', 'events', 'fields', 'applications'));
     }
 
     /**
@@ -76,7 +77,7 @@ class EventsFieldsController extends AppController
     public function edit($id = null)
     {
         $eventsField = $this->EventsFields->get($id, [
-            'contain' => []
+            'contain' => ['Applications']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eventsField = $this->EventsFields->patchEntity($eventsField, $this->request->getData());
@@ -89,7 +90,8 @@ class EventsFieldsController extends AppController
         }
         $events = $this->EventsFields->Events->find('list', ['limit' => 200]);
         $fields = $this->EventsFields->Fields->find('list', ['limit' => 200]);
-        $this->set(compact('eventsField', 'events', 'fields'));
+        $applications = $this->EventsFields->Applications->find('list', ['limit' => 200]);
+        $this->set(compact('eventsField', 'events', 'fields', 'applications'));
     }
 
     /**

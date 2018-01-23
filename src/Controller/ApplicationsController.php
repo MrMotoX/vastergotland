@@ -38,7 +38,7 @@ class ApplicationsController extends AppController
     public function view($id = null)
     {
         $application = $this->Applications->get($id, [
-            'contain' => ['Events', 'Pricings', 'Users', 'Fields']
+            'contain' => ['Events', 'Pricings', 'Users', 'Fields', 'EventsFields']
         ]);
 
         $this->set('application', $application);
@@ -65,7 +65,8 @@ class ApplicationsController extends AppController
         $pricings = $this->Applications->Pricings->find('list', ['limit' => 200]);
         $users = $this->Applications->Users->find('list', ['limit' => 200]);
         $fields = $this->Applications->Fields->find('list', ['limit' => 200]);
-        $this->set(compact('application', 'events', 'pricings', 'users', 'fields'));
+        $eventsFields = $this->Applications->EventsFields->find('list', ['limit' => 200]);
+        $this->set(compact('application', 'events', 'pricings', 'users', 'fields', 'eventsFields'));
     }
 
     /**
@@ -78,7 +79,7 @@ class ApplicationsController extends AppController
     public function edit($id = null)
     {
         $application = $this->Applications->get($id, [
-            'contain' => ['Fields']
+            'contain' => ['Fields', 'EventsFields']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $application = $this->Applications->patchEntity($application, $this->request->getData());
@@ -93,7 +94,8 @@ class ApplicationsController extends AppController
         $pricings = $this->Applications->Pricings->find('list', ['limit' => 200]);
         $users = $this->Applications->Users->find('list', ['limit' => 200]);
         $fields = $this->Applications->Fields->find('list', ['limit' => 200]);
-        $this->set(compact('application', 'events', 'pricings', 'users', 'fields'));
+        $eventsFields = $this->Applications->EventsFields->find('list', ['limit' => 200]);
+        $this->set(compact('application', 'events', 'pricings', 'users', 'fields', 'eventsFields'));
     }
 
     /**

@@ -4,19 +4,19 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * ApplicationsField Entity
+ * ApplicationsEventsField Entity
  *
  * @property int $id
  * @property int $application_id
- * @property int $field_id
+ * @property int $events_field_id
  * @property string $title
  * @property string $type
  * @property string $value
  *
  * @property \App\Model\Entity\Application $application
- * @property \App\Model\Entity\Field $field
+ * @property \App\Model\Entity\EventsField $events_field
  */
-class ApplicationsField extends Entity
+class ApplicationsEventsField extends Entity
 {
 
     /**
@@ -30,11 +30,11 @@ class ApplicationsField extends Entity
      */
     protected $_accessible = [
         'application_id' => true,
-        'field_id' => true,
+        'events_field_id' => true,
         'title' => true,
         'type' => true,
         'value' => true,
         'application' => true,
-        'field' => true
+        'events_field' => true
     ];
 }

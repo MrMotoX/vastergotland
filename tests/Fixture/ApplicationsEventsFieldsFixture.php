@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * ApplicationsFieldsFixture
+ * ApplicationsEventsFieldsFixture
  *
  */
-class ApplicationsFieldsFixture extends TestFixture
+class ApplicationsEventsFieldsFixture extends TestFixture
 {
 
     /**
@@ -19,7 +19,7 @@ class ApplicationsFieldsFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'application_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'field_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'events_field_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'title' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'type' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'value' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -42,7 +42,7 @@ class ApplicationsFieldsFixture extends TestFixture
         [
             'id' => 1,
             'application_id' => 1,
-            'field_id' => 1,
+            'events_field_id' => 1,
             'title' => 'Lorem ipsum dolor sit amet',
             'type' => 'Lorem ipsum dolor sit amet',
             'value' => 'Lorem ipsum dolor sit amet'

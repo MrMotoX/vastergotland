@@ -29,6 +29,8 @@ class ApplicationsTableTest extends TestCase
         'app.pricings',
         'app.users',
         'app.fields',
+        'app.events_fields',
+        'app.applications_events_fields',
         'app.applications_fields'
     ];
 

@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ApplicationsFieldsTable;
+use App\Model\Table\ApplicationsEventsFieldsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ApplicationsFieldsTable Test Case
+ * App\Model\Table\ApplicationsEventsFieldsTable Test Case
  */
-class ApplicationsFieldsTableTest extends TestCase
+class ApplicationsEventsFieldsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\ApplicationsFieldsTable
+     * @var \App\Model\Table\ApplicationsEventsFieldsTable
      */
-    public $ApplicationsFields;
+    public $ApplicationsEventsFields;
 
     /**
      * Fixtures
@@ -24,12 +24,11 @@ class ApplicationsFieldsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.applications_fields',
+        'app.applications_events_fields',
         'app.applications',
         'app.events',
         'app.pricings',
         'app.users',
-        'app.fields',
         'app.events_fields'
     ];
 
@@ -41,8 +40,8 @@ class ApplicationsFieldsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('ApplicationsFields') ? [] : ['className' => ApplicationsFieldsTable::class];
-        $this->ApplicationsFields = TableRegistry::get('ApplicationsFields', $config);
+        $config = TableRegistry::exists('ApplicationsEventsFields') ? [] : ['className' => ApplicationsEventsFieldsTable::class];
+        $this->ApplicationsEventsFields = TableRegistry::get('ApplicationsEventsFields', $config);
     }
 
     /**
@@ -52,7 +51,7 @@ class ApplicationsFieldsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->ApplicationsFields);
+        unset($this->ApplicationsEventsFields);
 
         parent::tearDown();
     }

@@ -19,9 +19,11 @@ class ApplicationsControllerTest extends IntegrationTestCase
         'app.applications',
         'app.events',
         'app.pricings',
-        'app.users',
+        'app.events_fields',
+        'app.applications_events_fields',
         'app.fields',
-        'app.applications_fields'
+        'app.applications_fields',
+        'app.users'
     ];
 
     /**

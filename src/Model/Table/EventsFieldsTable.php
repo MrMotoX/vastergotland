@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
  * EventsFields Model
  *
  * @property \App\Model\Table\EventsTable|\Cake\ORM\Association\BelongsTo $Events
- * @property \App\Model\Table\FieldsTable|\Cake\ORM\Association\BelongsTo $Fields
+ * @property \App\Model\Table\ApplicationsTable|\Cake\ORM\Association\BelongsToMany $Applications
  *
  * @method \App\Model\Entity\EventsField get($primaryKey, $options = [])
  * @method \App\Model\Entity\EventsField newEntity($data = null, array $options = [])
@@ -41,9 +41,10 @@ class EventsFieldsTable extends Table
             'foreignKey' => 'event_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Fields', [
-            'foreignKey' => 'field_id',
-            'joinType' => 'INNER'
+        $this->belongsToMany('Applications', [
+            'foreignKey' => 'events_field_id',
+            'targetForeignKey' => 'application_id',
+            'joinTable' => 'applications_events_fields'
         ]);
     }
 
@@ -94,7 +95,6 @@ class EventsFieldsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['event_id'], 'Events'));
-        $rules->add($rules->existsIn(['field_id'], 'Fields'));
 
         return $rules;
     }

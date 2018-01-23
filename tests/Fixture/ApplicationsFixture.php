@@ -48,7 +48,7 @@ class ApplicationsFixture extends TestFixture
             'user_id' => 1,
             'ssn' => 'Lorem ipsu',
             'email' => 'Lorem ipsum dolor sit amet',
-            'date' => '2018-01-22',
+            'date' => '2018-01-23',
             'price' => 1.5
         ],
     ];
