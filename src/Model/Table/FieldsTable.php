@@ -1,8 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -64,7 +62,7 @@ class FieldsTable extends Table
             ->requirePresence('validation', 'create');
 
         $validator
-            ->requirePresence('index', 'create');
+            ->requirePresence('sort', 'create');
 
         return $validator;
     }
@@ -76,7 +74,7 @@ class FieldsTable extends Table
                 'Fields.type' => $type
             ])
             ->order([
-                'Fields.title ASC'
+                'Fields.sort ASC'
             ]);
     }
 }

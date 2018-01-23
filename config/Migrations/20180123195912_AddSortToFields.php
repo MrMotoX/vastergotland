@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class AddIndexToFields extends AbstractMigration
+class AddSortToFields extends AbstractMigration
 {
     /**
      * Change Method.
@@ -13,7 +13,7 @@ class AddIndexToFields extends AbstractMigration
     public function change()
     {
         $table = $this->table('fields');
-        $table->addColumn('index', 'integer', [
+        $table->addColumn('sort', 'integer', [
             'default' => null,
             'limit' => 11,
             'null' => false,
