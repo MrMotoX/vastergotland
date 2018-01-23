@@ -58,7 +58,8 @@ class FieldsTable extends Table
             ->requirePresence('type', 'create');
 
         $validator
-            ->inList('validation', ['', 'notEmpty', 'notZero', 'ssn'])
+            ->inList('validation', ['notEmpty', 'notZero', 'ssn'])
+            ->allowEmpty('validation')
             ->requirePresence('validation', 'create');
 
         $validator
@@ -67,7 +68,7 @@ class FieldsTable extends Table
         return $validator;
     }
 
-    public function getFieldsByTypeQuery($type = '')
+    public function getFieldsByTypeQuery($type)
     {
         $query = $this->find('all');
         $query
@@ -78,5 +79,19 @@ class FieldsTable extends Table
                 'Fields.sort ASC'
             ]);
         return $query;
+    }
+
+    public function getValidationById($id)
+    {
+        $query = $this->find('all');
+        $query
+            ->select([
+                'Fields.validation'
+            ])
+            ->where([
+                'Fields.id' => $id
+            ]);
+
+        return $query->first()->validation;
     }
 }
