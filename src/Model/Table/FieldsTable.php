@@ -35,12 +35,6 @@ class FieldsTable extends Table
         $this->setTable('fields');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
-
-        $this->belongsToMany('Events', [
-            'foreignKey' => 'field_id',
-            'targetForeignKey' => 'event_id',
-            'joinTable' => 'events_fields'
-        ]);
     }
 
     /**
@@ -62,20 +56,12 @@ class FieldsTable extends Table
             ->notEmpty('title');
 
         $validator
-            ->scalar('type')
-            ->maxLength('type', 255)
-            ->requirePresence('type', 'create')
-            ->notEmpty('type');
+            ->inList('type', ['text', 'decimal', 'select', 'checkbox'])
+            ->requirePresence('type', 'create');
 
         $validator
-            ->scalar('validation')
-            ->requirePresence('validation', 'create')
-            ->notEmpty('validation');
-
-        $validator
-            ->scalar('data')
-            ->requirePresence('data', 'create')
-            ->notEmpty('data');
+            ->inList('validation', ['notEmpty', 'notZero'])
+            ->requirePresence('validation', 'create');
 
         return $validator;
     }
