@@ -56,13 +56,27 @@ class FieldsTable extends Table
             ->notEmpty('title');
 
         $validator
-            ->inList('type', ['text', 'decimal', 'select', 'checkbox'])
+            ->inList('type', ['text', 'decimal', 'integer', 'select', 'checkbox'])
             ->requirePresence('type', 'create');
 
         $validator
-            ->inList('validation', ['notEmpty', 'notZero'])
+            ->inList('validation', ['', 'notEmpty', 'notZero', 'ssn'])
             ->requirePresence('validation', 'create');
 
+        $validator
+            ->requirePresence('index', 'create');
+
         return $validator;
+    }
+
+    public function getFieldsByTypeQuery($type = '')
+    {
+        return $this->find('all')
+            ->where([
+                'Fields.type' => $type
+            ])
+            ->order([
+                'Fields.title ASC'
+            ]);
     }
 }
