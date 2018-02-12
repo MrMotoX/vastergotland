@@ -10,6 +10,7 @@
         <li><?= $this->Html->link(__('New Event'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Pricings'), ['controller' => 'Pricings', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Pricing'), ['controller' => 'Pricings', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Fields'), ['controller' => 'Fields', 'action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="events index large-9 medium-8 columns content">
