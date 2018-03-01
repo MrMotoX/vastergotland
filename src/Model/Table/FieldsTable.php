@@ -62,9 +62,6 @@ class FieldsTable extends Table
             ->allowEmpty('validation')
             ->requirePresence('validation', 'create');
 
-        $validator
-            ->requirePresence('sort', 'create');
-
         return $validator;
     }
 

@@ -58,9 +58,19 @@ class FieldsController extends AppController
             }
             $this->Flash->error(__('The field could not be saved. Please, try again.'));
         }
-        $applications = $this->Fields->Applications->find('list', ['limit' => 200]);
-        $events = $this->Fields->Events->find('list', ['limit' => 200]);
-        $this->set(compact('field', 'applications', 'events'));
+        $types = [
+            'text' => 'text',
+            'decimal' => 'decimal',
+            'integer' => 'integer',
+            'select' => 'select',
+            'checkbox' => 'checkbox'
+        ];
+        $validations = [
+            'notEmpty' => 'notEmpty',
+            'notZero' => 'notZero',
+            'ssn' => 'ssn'
+        ];
+        $this->set(compact('field', 'types', 'validations'));
     }
 
     /**

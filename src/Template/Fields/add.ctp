@@ -19,12 +19,10 @@
     <fieldset>
         <legend><?= __('Add Field') ?></legend>
         <?php
-            echo $this->Form->control('title');
-            echo $this->Form->control('type');
-            echo $this->Form->control('validation');
-            echo $this->Form->control('data');
-            echo $this->Form->control('applications._ids', ['options' => $applications]);
-            echo $this->Form->control('events._ids', ['options' => $events]);
+            echo $this->Form->control('Fields.title');
+            echo $this->Form->control('Fields.type', ['type' => 'select', 'options' => $types]);
+            echo $this->Form->control('Fields.validation', ['type' => 'select', 'options' => $validations, 'empty' => true]);
+            echo $this->Form->control('Fields.data');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
