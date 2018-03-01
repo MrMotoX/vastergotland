@@ -72,10 +72,7 @@ class ApplicationsEventsFieldsTable extends Table
             ->notEmpty('type');
 
         $validator
-            ->scalar('value')
-            ->maxLength('value', 255)
-            ->requirePresence('value', 'create')
-            ->notEmpty('value');
+            ->requirePresence('value', 'create');
 
         return $validator;
     }
@@ -93,5 +90,39 @@ class ApplicationsEventsFieldsTable extends Table
         $rules->add($rules->existsIn(['events_field_id'], 'EventsFields'));
 
         return $rules;
+    }
+
+    public function validateValueByEventsFieldId($eventsFieldId, $value)
+    {
+        $eventsFieldQuery = $this->EventsFields->find('all', [
+            'select' => [
+                'validation'
+            ],
+            'conditions' => [
+                'id' => $eventsFieldId
+            ]
+        ]);
+        $eventsField = $eventsFieldQuery->first();
+
+        $validator = new Validator();
+
+        switch ($eventsField->validation)
+        {
+            case 'notEmpty':
+                $validator
+                    ->notEmpty('value');
+                break;
+
+            case 'notZero':
+                $validator
+                    ->greaterThan('value', 0);
+        }
+
+        if (empty($validator->errors(['value' => $value])))
+        {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -25,10 +25,6 @@ class ApplicationsEventsFieldsTableTest extends TestCase
      */
     public $fixtures = [
         'app.applications_events_fields',
-        'app.applications',
-        'app.events',
-        'app.pricings',
-        'app.users',
         'app.events_fields'
     ];
 
@@ -84,5 +80,35 @@ class ApplicationsEventsFieldsTableTest extends TestCase
     public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    public function testValidatingNotEmptyValue()
+    {
+        $validated = $this->ApplicationsEventsFields->validateValueByEventsFieldId(1, 'Test value');
+        $this->assertTrue($validated);
+    }
+
+    public function testValidatingEmptyValue()
+    {
+        $validated = $this->ApplicationsEventsFields->validateValueByEventsFieldId(1, '');
+        $this->assertFalse($validated);
+    }
+
+    public function testValidatingNonZeroValue()
+    {
+        $validated = $this->ApplicationsEventsFields->validateValueByEventsFieldId(2, 1);
+        $this->assertTrue($validated);
+    }
+
+    public function testValidatingZeroValue()
+    {
+        $validated = $this->ApplicationsEventsFields->validateValueByEventsFieldId(2, 0);
+        $this->assertFalse($validated);
+    }
+
+    public function testValidatingNoRules()
+    {
+        $validated = $this->ApplicationsEventsFields->validateValueByEventsFieldId(3,'');
+        $this->assertTrue($validated);
     }
 }
